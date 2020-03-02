@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p> Hello content </p>
+<h3>Login form </h3>
+<!-- <form method="POST" action="/loggin">
+    {% csrf_token %}
+    <input type="text" id="usernme" name="usernme">
+    <input type="password" id="pass1" name="pass1">
+    <button type="submit" onclick="call_login()" > Login </button>
+</form> -->
+
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Login</button>
+  </form>
+
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+  function call_login(){
+    $.ajax({
+      method: 'POST',
+      url: "/loggin/", 
+      context: {
+        uname = $('#usernme').val(),
+        passw = $('#pass1').val()
+      },
+      success: function(result){
+        alert("success")
+      // $("#div1").html(result);
+  }});
+  }
+</script>
+{% endblock %}

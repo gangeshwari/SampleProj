@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+
+        <a href="show_models">  </a>
+        <div class="row mt-10">
+        {% if products %}
+        {% for c in products %}
+            <div class="col-3 m-10">
+            <div class="card" style="width: 18rem;">
+                <img src="{% static 'img/c1.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{c.model}} {{c.id}}</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <!-- <li class="list-group-item">Cras justo odio</li>
+                  <li class="list-group-item">Dapibus ac facilisis in</li> -->
+                  <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+                <div class="card-body">
+                  <a href="get_cell_details?cell_id={{c.id}}" class="card-link">view details</a>
+                  <!-- <a href="#" class="card-link">Another link</a> -->
+                </div>
+              </div>
+            </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+        <button type="button" class="btn btn-primary" >
+            <a href="add_cellphones">Add cellphones </a>
+        </button>
+
+
+  
+  
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    Launch demo modal
+  </button> -->
+  <!-- Button trigger modal -->
+<!-- <button id="orange-button" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#orange-modal" data-color="orange">
+    Add cellphones
+  </button> -->
+  
+  <!-- Modal -->
+  <!-- <div class="modal fade" id="orange-modal" tabindex="-1" role="dialog" aria-labelledby="orange-modal-label" data-color="orange">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="orange-modal-title"></h4>
+        </div>
+        <div class="modal-body">
+          
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input class="btn btn-primary" type="submit" value="Submit">
+</form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+  
+  
+  <script>
+ 
+  </script>
+
+{% endblock %}
