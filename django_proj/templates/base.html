@@ -5,15 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title> Document </title>
     <style>
-        .bg-blue {
-            background-color: blue;
-        }
-        .txt-white {
-            color: white !important;
-        }
+        
     </style>
 </head>
 <body>
@@ -25,7 +21,7 @@
         <div class="row bg-blue">
           <div class="col-1"></div>
             <div class="col-3">
-                <img src="/static/img/dummylogo.png" width="65px" class="" alt="...">
+                <img src="/static/img/logo2.jpg" width="135px" height="56px" class="" alt="...">
             </div>
             <div class="col-8 txt-white">
                 <nav class="navbar navbar-expand-lg navbar-light" style="float: right;">
@@ -37,14 +33,17 @@
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                         <li class="nav-item active">
-                          <a class="nav-link txt-white" href="#">Home <span class="sr-only">(current)</span></a>
+                          <div class="row">
+                            <img src="/static/img/profile_pic.png" class="img-cirle" alt="">
+                            <a class="nav-link txt-white" href="#">Gangeshwai <span class="sr-only">(current)</span></a>
+                          </div>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                           <a class="nav-link txt-white" href="#">Link</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link txt-white" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                        </li>
+                        </li> -->
                       </ul>
                     </div>
                   </nav>
@@ -54,7 +53,7 @@
 
     <div class="row">
         <div class="col-2 bg-blue2">
-            <div class="row mt-12 ml-5"> Dashboard </div>
+            <div class=" clr-white " style="padding: 25px 51px;" > Dashboard </div>
         </div>
         <div class="col-10">
             {% block content %}

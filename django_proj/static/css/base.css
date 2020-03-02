@@ -5,3 +5,26 @@
 .bg-blue2 {
     background-color: #290a73e3;
 }
+
+.img-cirle {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    margin-top: 7px;
+}
+.clr-white {
+    color: white !important;
+}
+.txt-cntr {
+    text-align: center;
+  }
+  .bg-blue {
+    background-color: blue;
+}
+.txt-white {
+    color: white !important;
+}
+.btn-bck {
+    margin-top: 30px;
+    padding-left: 50px;;
+}

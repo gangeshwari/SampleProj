@@ -1,16 +1,9 @@
 {% extends "base.html" %}
 
 {% load static %}
+{% load humanizelib  %}
 {% block content %}
-<style>
-.txt-white {
-    color: white;
-}
-.btn-bck {
-    margin-top: 30px;
-    padding-left: 50px;;
-}
-</style>
+
 <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
 <div class="row">
@@ -19,24 +12,26 @@
     <div class="col-4">
         <div class="card" style="width: 18rem;">
             <img src="{% static 'img/c1.jpg' %}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{product.model}} {{product.id}}</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <!-- <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li> -->
-                <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-            <div class="card-body">
-                <a href="get_cell_details?cell_id={{product.id}}" class="card-link">view details</a>
-                <!-- <a href="#" class="card-link">Another link</a> -->
-            </div>
-            </div>
+                <div class="card-body">
+                  <h5 class="card-title txt-cntr"> {{product.model}} ( {{product.color}} ) </h5>
+                  <p class="card-text txt-cntr"> {{product.ram}} ({{product.rom}}) </p>
+                </div>
+                <ul class="list-group list-group-flush ">
+                  <li class="list-group-item txt-cntr"> {{product.name}} </li>
+                  <li class="list-group-item txt-cntr">{{product.front_camera}} | {{product.rear_camera}}</li>
+                  <li class="list-group-item txt-cntr">{{product.battery}}</li>
+                  <!-- <li class="list-group-item txt-cntr">{{product.price}}</li> -->
+                </ul>
+                <div class="card-body txt-cntr">
+                  <div class=""> <p> <strong> <i class="fa fa-rupee" ></i> {{product.price|intcomma}} </strong> </p> </div>
+                  <a href="get_cell_details?cell_id={{c.id}}" class="card-link">view details</a>
+                  <!-- <a href="#" class="card-link">Another link</a> -->
+                </div>
+        </div>
     </div>
     <div class="col-4 btn-bck mt-30 pl-50">
         <button type="button" class="btn btn-primary" >
-            <a href="javascript:history.back()" class="txt-white">Go Back </a>
+            <a href="javascript:history.back()" class="clr-white">Go Back </a>
     </button>
     </div>
 
