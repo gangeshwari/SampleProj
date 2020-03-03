@@ -10,19 +10,19 @@
   <div class="col-4 login-box">
     <form method="post" >
       {% csrf_token %}
-      <h3>Login form </h3>
+      <h3> Log In </h3>
       <p>
-        <input type="text" id="usernme" name="usernme" placeholder="Enter your email id">
+        <input type="text" id="usernme" name="usernme" placeholder="Enter email id">
       </p> 
       <p>
-        <input type="password" id="pass1" name="pass1" placeholder="Enter your password"> <br/>
+        <input type="password" id="pass1" name="pass1" placeholder="Enter password"> <br/>
       </p>
       <button type="submit" class="btn btn-primary" >Login</button>
       <input type="hidden" id="csrf_token" value='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'>
     </form>
     <p> Don't you have an account? <a href="/register"> Sign Up </a> </p>
     {% if msg %}
-    <p>user doesnt exixts</p>
+    <p style="color:red">user doesnt exixts</p>
     {% endif %}
   </div>
   <div class="col-4"></div>
