@@ -6,6 +6,7 @@ from django.template import RequestContext
 from django.shortcuts import redirect
 from users.forms import RegisterForm
 from products.models import CellPhones
+from django.contrib import auth
 
 from django.contrib.auth import authenticate
 
@@ -38,10 +39,11 @@ def go_to_login(request):
     if request.method == "POST":
         context = RequestContext(request)
         print (request.POST, "================================================")
-        cells = CellPhones.objects.all()
+        products = CellPhones.objects.all()
         user = authenticate(username=request.POST['usernme'], password=request.POST['pass1'])
         if user is not None:
             print("tttttttttttttttttt")
+            auth.login(request, user)
             return render(request, 'home_page.html', locals())
         else:
             print("=====fffffffffffffff")
