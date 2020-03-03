@@ -5,7 +5,15 @@
 {% block content %}
 
 <link rel="stylesheet" href="{% static 'css/base.css' %}">
-
+<div class="row">
+  <div class="col-2 bordr-rt">
+      <div class="sidenav">
+          <a href="/products" class="active"> Mobiles </a>
+    
+          <a href="/products/laptops"> Laptops </a>
+        </div>
+  </div>
+  <div class="col-9">
 <div class="row">
         {% if product %}
     <div class="col-4"></div>
@@ -24,20 +32,21 @@
                 </ul>
                 <div class="card-body txt-cntr">
                   <div class=""> <p> <strong> <i class="fa fa-rupee" ></i> {{product.price|intcomma}} </strong> </p> </div>
-                  <a href="get_cell_details?cell_id={{c.id}}" class="card-link">view details</a>
+                  <!-- <a href="get_cell_details?cell_id={{c.id}}" class="card-link">view details</a> -->
                   <!-- <a href="#" class="card-link">Another link</a> -->
                 </div>
         </div>
     </div>
     <div class="col-4 btn-bck mt-30 pl-50">
         <button type="button" class="btn btn-primary" >
-            <a href="/products" class="clr-white">Go Back </a>
+            <a href="/products/laptops" class="clr-white">Go Back </a>
     </button>
     </div>
 
     {% endif %}
 </div>
-
+</div>
+</div>
 
 
 {% endblock %}

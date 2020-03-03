@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load humanizelib  %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<style>
+  
+</style>
+<div class="row">
+  <div class="col-2 ">
+    <!-- <div class="  " style="padding: 25px 51px;" > Mobiles </div>
+    <div class="  " style="padding: 25px 51px;" > Laptops </div> -->
+    <div class="sidenav">
+      <a href="/products"> Mobiles </a>
+      <a href="/products/laptops"> Laptops </a>
+      <!-- <a href="#clients">Clients</a>
+      <a href="#contact">Contact</a> -->
+    </div>
+
+  </div>
+  <div class="col-9">
+    <div class="row">
+      {% if laptops %}
+      {% for l in laptops %}
+        <div class="col-4 m-10">
+          <div class="card" style="width: 18rem;">
+              <img src="{% static 'img/lap1.jpg' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title txt-cntr">{{l.which_laptop}} {{l.ram}} ({{l.model}})</h5>
+                <p class="card-text txt-cntr">{{l.ram}} ({{l.rom}})</p>
+              </div>
+              <ul class="list-group list-group-flush ">
+                <!-- <li class="list-group-item"></li> -->
+                <li class="list-group-item txt-cntr">{{l.os}}</li>
+                <li class="list-group-item txt-cntr">{{l.processor_type}} | {{l.processor_generation}}</li>
+                <li class="list-group-item txt-cntr">{{l.battery}}</li>
+              </ul>
+              <div class="card-body txt-cntr">
+                <div class=""> <p> <strong> <i class="fa fa-rupee" style=""></i> {{l.price|intcomma}} </strong> </p> </div>
+                <a href="/products/get_laptop_details?lap_id={{l.id}}" class="card-link">view details</a>
+                <!-- <a href="#" class="card-link">Another link</a> -->
+              </div>
+            </div>
+        </div>
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+  
+
+<button type="button" class="btn btn-primary" >
+    <a href="/products/laptops " class="clr-white">Add cellphones </a>
+</button>
+
+
+  
+  
+  <script>
+ 
+  </script>
+
+{% endblock %}

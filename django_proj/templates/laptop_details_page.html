@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load humanizelib  %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<div class="row">
+    <div class="col-2 bordr-rt">
+        <div class="sidenav">
+            <a href="/products" class="active"> Mobiles </a>
+      
+            <a href="/products/laptops"> Laptops </a>
+          </div>
+    </div>
+    <div class="col-9">
+    <div class="row">
+            {% if laptop %}
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="card" style="width: 18rem;">
+                <img src="{% static 'img/lap1.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title txt-cntr">{{laptop.which_laptop}} {{laptop.ram}} ({{laptop.model}})</h5>
+                    <p class="card-text txt-cntr">{{laptop.ram}} ({{laptop.rom}})</p>
+                </div>
+                <ul class="list-group list-group-flush ">
+                    <li class="list-group-item txt-cntr">{{laptop.os}}</li>
+                    <li class="list-group-item txt-cntr">{{laptop.processor_type}} | {{laptop.processor_generation}}</li>
+                    <li class="list-group-item txt-cntr">{{laptop.battery}}</li>
+                    <li class="list-group-item txt-cntr"> {{laptop.sales_package}} </li>
+                </ul>
+                <div class="card-body txt-cntr">
+                    <div class=""> <p> <strong> <i class="fa fa-rupee" style=""></i> {{laptop.price|intcomma}} </strong> </p> </div>
+                    <!-- <a href="/products/get_laptop_details?lap_id={{laptop.id}}" class="card-link">view details</a> -->
+                </div>
+            </div>
+        </div>
+        <div class="col-4 btn-bck mt-30 pl-50">
+            <button type="button" class="btn btn-primary" >
+                <a href="/products" class="clr-white">Go Back </a>
+        </button>
+        </div>
+
+        {% endif %}
+    </div>
+    </div>
+</div>
+
+
+{% endblock %}

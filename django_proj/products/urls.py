@@ -18,6 +18,8 @@ from django.urls import path
 
 urlpatterns = [
     path('', views.go_to_function, name="go_to_function"),
+    path('laptops', views.get_laptops, name="get_laptops"),
+    path('get_laptop_details', views.get_laptop_details, name="get_laptop_details"),
     # path('save_prod', views.go_to_function, name="go_to_function"),
     path('show_models', views.show_models, name="show_models"),
     path('add_cellphones', views.add_cellphones, name="add_cellphones"),
