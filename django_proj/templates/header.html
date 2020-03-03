@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <div class="row bg-blue">
+      <div class="col-1"></div>
+        <div class="col-3">
+            <img src="/static/img/logo2.jpg" width="135px" height="56px" class="" alt="...">
+        </div>
+        <div class="col-8 txt-white">
+            <nav class="navbar navbar-expand-lg navbar-light" style="float: right;">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- <a class="navbar-brand txt-white" href="#">Navbar</a> -->
+              
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item active">
+                        <div class="row">
+                            <img src="/static/img/profile_pic.png" class="img-cirle" alt="">
+                            
+                            <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle clr-white" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                {{ user.first_name }}
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="/logout">Logout</a></li>
+                                <!-- <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li> -->
+                            </ul>
+                            </div>
+                        </div>
+                    </li> 
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link txt-white" href="/register">Signup</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link txt-white" href="/login" tabindex="-1" aria-disabled="true">Login</a>
+                    </li>
+                    {% endif %}
+                    <!-- <li class="nav-item">
+                      <a class="nav-link txt-white" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link txt-white" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li> -->
+                  </ul>
+                </div>
+              </nav>
+        </div>
+      </div>
+</div>

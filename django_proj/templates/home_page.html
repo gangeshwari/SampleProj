@@ -7,8 +7,8 @@
 
 
   <div class="row mt-10">
-  {% if products %}
-  {% for c in products %}
+  {% if cells %}
+  {% for c in cells %}
     <div class="col-3 m-10">
       <div class="card" style="width: 18rem;">
           <img src="{% static 'img/c1.jpg' %}" class="card-img-top" alt="...">
@@ -24,16 +24,17 @@
           </ul>
           <div class="card-body txt-cntr">
             <div class=""> <p> <strong> <i class="fa fa-rupee" style=""></i> {{c.price|intcomma}} </strong> </p> </div>
-            <a href="get_cell_details?cell_id={{c.id}}" class="card-link">view details</a>
+            <a href="/products/get_cell_details?cell_id={{c.id}}" class="card-link">view details</a>
             <!-- <a href="#" class="card-link">Another link</a> -->
           </div>
         </div>
     </div>
   {% endfor %}
   {% endif %}
+
 </div>
 <button type="button" class="btn btn-primary" >
-    <a href="add_cellphones " class="clr-white">Add cellphones </a>
+    <a href="/products/add_cellphones " class="clr-white">Add cellphones </a>
 </button>
 
 

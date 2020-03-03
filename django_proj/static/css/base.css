@@ -1,7 +1,12 @@
 .bg-color {
     background-color: blue;
 }
-
+.login-box {
+    text-align: center;
+      border: solid 1px #ccc;
+      margin-top: 25px;
+      padding: 10px;
+  }
 .bg-blue2 {
     background-color: #290a73e3;
 }

@@ -19,12 +19,14 @@ from django.contrib.auth import views as auth_views
 from . import views
 
 urlpatterns = [
-    # path('', include('products.urls')),
+    path('',  views.go_to_index, name='go_to_index'),
     path('register/', views.go_to_register, name='go_to_register'),
-    # path('login/', views.go_to_login, name='go_to_login' ),
+    path('login/', views.go_to_login, name='go_to_login' ),
+    path('loggin/', views.go_to_loginin_in, name='go_to_loginin_in' ),
     path('show_models/', views.show_models, name='show_models'),
-    path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(template_name='logout.html'), name='logout'),
+    # path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('products/', include('products.urls')),
     path('admin/', admin.site.urls),
+    # path('accounts/', include('django.contrib.auth.urls')),
 ]

@@ -1,13 +1,26 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
 
 {% block content %}
-
-<h3>Register form </h3>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit"> signup </button>
-</form>
-
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<div class="row">
+<div class="col-4"></div>
+<div class="col-4 login-box">
+    <h3>Sign Up </h3>
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset>
+            {{ form | crispy }}
+        </fieldset>
+        <button type="submit" class="btn btn-primary"> signup </button>
+    </form>
+    <p> Already have an account? <a href="/login"> Log In </a> </p>
+    {% if msg %}
+    <p style="color: red;"> Please enter valid form details </p>
+    {% endif %}
+</div>
+<div class="col-4"></div>
+</div>
 
 {% endblock %}

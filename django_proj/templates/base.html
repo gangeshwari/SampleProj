@@ -17,52 +17,54 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-    <div class="container-fluid">
-        <div class="row bg-blue">
-          <div class="col-1"></div>
-            <div class="col-3">
-                <img src="/static/img/logo2.jpg" width="135px" height="56px" class="" alt="...">
-            </div>
-            <div class="col-8 txt-white">
-                <nav class="navbar navbar-expand-lg navbar-light" style="float: right;">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <!-- <a class="navbar-brand txt-white" href="#">Navbar</a> -->
-                  
-                    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item active">
-                          <div class="row">
-                            <img src="/static/img/profile_pic.png" class="img-cirle" alt="">
-                            <a class="nav-link txt-white" href="#">Gangeshwai <span class="sr-only">(current)</span></a>
-                          </div>
-                        </li>
-                        <!-- <li class="nav-item">
-                          <a class="nav-link txt-white" href="#">Link</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link txt-white" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                        </li> -->
-                      </ul>
-                    </div>
-                  </nav>
-            </div>
-          </div>
-    </div>
-
-    <div class="row">
-        <div class="col-2 bg-blue2">
-            <div class=" clr-white " style="padding: 25px 51px;" > Dashboard </div>
+    {% include 'header.html' %}
+    
+    {% block content %}
+    <style>
+      /* Make the image fully responsive */
+      .carousel-inner img {
+        width: 100%;
+        /* height: auto; */
+      }
+      </style>
+    <div id="demo" class="carousel slide" data-ride="carousel">
+      <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+      </ul>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="/static/img/car1.jpg" alt="Los Angeles" width="1100" height="500">
+          <div class="carousel-caption">
+            <h3>Los Angeles</h3>
+            <p>We had such a great time in LA!</p>
+          </div>   
         </div>
-        <div class="col-10">
-            {% block content %}
-                <p> Hello </p>
-            {% endblock %}
+        <div class="carousel-item">
+          <img src="/static/img/car2.jpg" alt="Chicago" width="1100" height="500">
+          <div class="carousel-caption">
+            <h3>Chicago</h3>
+            <p>Thank you, Chicago!</p>
+          </div>   
         </div>
-
+        <div class="carousel-item">
+          <img src="/static/img/car3.png" alt="New York" width="1100" height="500">
+          <div class="carousel-caption">
+            <h3>New York</h3>
+            <p>We love the Big Apple!</p>
+          </div>   
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
     </div>
-
+    {% endblock %}
+    {% include 'footer.html' %}
 
 </body>
 </html>

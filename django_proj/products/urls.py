@@ -18,7 +18,7 @@ from django.urls import path
 
 urlpatterns = [
     path('', views.go_to_function, name="go_to_function"),
-    path('save_prod', views.go_to_function, name="go_to_function"),
+    # path('save_prod', views.go_to_function, name="go_to_function"),
     path('show_models', views.show_models, name="show_models"),
     path('add_cellphones', views.add_cellphones, name="add_cellphones"),
     path('get_cell_details', views.get_cell_details, name="get_cell_details"),

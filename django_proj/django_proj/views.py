@@ -3,7 +3,6 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login
 from django.template import RequestContext
-# from django.shortcuts import render_to_response
 from django.shortcuts import redirect
 from users.forms import RegisterForm
 from products.models import CellPhones
@@ -15,14 +14,52 @@ def go_to_home(request):
     print("--------------------")
     return render(request, 'home_page.html', context={})
 
+def go_to_index(request):
+    return render(request, 'base.html', context={})
+
 
 def go_to_register(request):
-    form = RegisterForm()
-    return render(request, 'register.html', {'form':form} )
+    if request.method == "POST":
+        print (request.POST)
+        form = RegisterForm(request.POST)
+        if form.is_valid:
+            print("valid form ----------------------")
+            form.save()
+            return redirect('/login')
+        else:
+            msg = "invalid form"
+            return render(request, 'register.html', locals() )
+    else:
+        form = RegisterForm()
+        return render(request, 'register.html', {'form':form} )
 
 
 def go_to_login(request):
-    return render(request, 'login.html', context={})
+    if request.method == "POST":
+        context = RequestContext(request)
+        print (request.POST, "================================================")
+        cells = CellPhones.objects.all()
+        user = authenticate(username=request.POST['usernme'], password=request.POST['pass1'])
+        if user is not None:
+            print("tttttttttttttttttt")
+            return render(request, 'home_page.html', locals())
+        else:
+            print("=====fffffffffffffff")
+            msg = "user doesnt exixts"
+            return render(request, 'login.html', locals())
+        # form = CellPoneForm(request.POST)
+        # if form.is_valid:
+        #     print("valid form ----------------------")
+        #     form.save()
+        #     # return redirect('home_page.html')
+        #     cells = CellPhones.objects.all()
+            # return render(request, 'home_page.html', {'products': cells})
+    else:
+        context = RequestContext(request)
+        context_dict = {}
+        # context_dict.update(csrf(request))
+        # return render_to_response("login.html", context_dict, context)
+        return render(request, 'login.html', context_dict)
 
 
 def go_to_loginin_in(request):
