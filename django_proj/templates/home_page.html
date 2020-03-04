@@ -5,10 +5,12 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/base.css' %}">
 <style>
-  
+  .card {
+    margin-top: 25px;;
+  }
 </style>
 <div class="row">
-  <div class="col-2 ">
+  <div class="col-2 " style="padding-left: 0;border-right: solid 1px #cccccc;">
     <div class="sidenav">
       <a href="/products" class="active"> Mobiles </a>
 
@@ -34,9 +36,10 @@
                 <!-- <li class="list-group-item txt-cntr">{{c.price}}</li> -->
               </ul>
               <div class="card-body txt-cntr">
-                <div class=""> <p> <strong> <i class="fa fa-rupee" style=""></i> {{c.price|intcomma}} </strong> </p> </div>
-                <a href="/products/get_cell_details?cell_id={{c.id}}" class="card-link">view details</a>
-                <!-- <a href="#" class="card-link">Another link</a> -->
+                <div class=""> <p> <strong> <i class="fa fa-rupee"></i> {{c.price|intcomma}} </strong> </p> </div>
+                <a href="/products/get_cell_details?cell_id={{c.id}}" class="card-link">View details</a>
+                <!-- <button type="text" class="btn btn-link" onclick="confirm_delete('{{c.id}}')" class="card-link">Delete</button> -->
+                <!-- <a href="/products/add_cellphones" class="card-link">edit details</a> -->
               </div>
             </div>
         </div>
@@ -46,6 +49,15 @@
   </div>
 </div>
 
+
+<script>
+  function confirm_delete(cid){
+    let isBoss = confirm("Are you sure you want to delete?");
+    if(isBoss){
+      window.location.href = '/products/delete_mob?cell_id='+cid;
+    }
+  }
+</script>
   
 
 <!-- <button type="button" class="btn btn-primary" >

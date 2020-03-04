@@ -47,6 +47,14 @@ def get_cell_details(request):
     return render(request, 'prod_details_page.html', {'product': cell[0]})
 
 
+def delete_mob(request):
+    c_id = request.GET['cell_id']
+    cell = CellPhones.objects.filter(id=c_id).first()
+    if cell:
+        cell.delete()
+        return redirect('/products')
+
+
 def go_to_loginin_in(request):
     print("------------------111")
     # import pdb; pdb.set_trace()

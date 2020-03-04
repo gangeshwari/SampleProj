@@ -24,7 +24,7 @@ def go_to_register(request):
     if request.method == "POST":
         # import pdb; pdb.set_trace()
         u,created = User.objects.get_or_create(username=request.POST['email'], 
-            first_name=request.POST['first_name'],
+            first_name=request.POST['first_name'], last_name=request.POST['last_name'],
             email=request.POST['email'] 
             )
         if created:
@@ -49,12 +49,12 @@ def go_to_login(request):
         context = RequestContext(request)
         
         user = authenticate(username=request.POST['usernme'], password=request.POST['pass1'])
-        if request.POST['usernme'] == 'admin':
-            adm = User.objects.filter(username=request.POST['usernme']).first()
-            if adm.is_superuser:
-                auth.login(request, user)
-                return render(request, 'admin_dashboard.html', locals())
-        elif user is not None :
+        # if request.POST['usernme'] == 'admin':
+        #     adm = User.objects.filter(username=request.POST['usernme']).first()
+        #     if adm.is_superuser:
+        #         auth.login(request, user)
+        #         return render(request, 'admin_dashboard.html', locals())
+        if user is not None :
             products = CellPhones.objects.all()
             auth.login(request, user)
             return HttpResponseRedirect('/products')

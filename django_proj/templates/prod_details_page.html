@@ -32,15 +32,17 @@
                 </ul>
                 <div class="card-body txt-cntr">
                   <div class=""> <p> <strong> <i class="fa fa-rupee" ></i> {{product.price|intcomma}} </strong> </p> </div>
-                  <!-- <a href="get_cell_details?cell_id={{c.id}}" class="card-link">view details</a> -->
+                  <button type="button" class="btn btn-primary" onclick="alert('Thak you for buying this product' )">
+                     BUY
+                  </button><!-- <a href="get_cell_details?cell_id={{c.id}}" class="card-link">view details</a> -->
                   <!-- <a href="#" class="card-link">Another link</a> -->
                 </div>
         </div>
     </div>
     <div class="col-4 btn-bck mt-30 pl-50">
         <button type="button" class="btn btn-primary" >
-            <a href="/products/laptops" class="clr-white">Go Back </a>
-    </button>
+            <a href="/products" class="clr-white">Go Back </a>
+        </button>
     </div>
 
     {% endif %}

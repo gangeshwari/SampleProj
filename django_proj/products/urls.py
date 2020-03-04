@@ -24,4 +24,5 @@ urlpatterns = [
     path('show_models', views.show_models, name="show_models"),
     path('add_cellphones', views.add_cellphones, name="add_cellphones"),
     path('get_cell_details', views.get_cell_details, name="get_cell_details"),
+    path('delete_mob', views.delete_mob, name="delete_mob"),
 ]
