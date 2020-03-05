@@ -3,24 +3,140 @@
 {% load static %}
 
 {% block content %}
+<style>
+    .error {
+        color: red;
+    }
+</style>
 <link rel="stylesheet" href="{% static 'css/base.css' %}">
 <div class="row">
 <div class="col-4"></div>
 <div class="col-4 login-box">
-    <h3>Sign Up </h3>
-    <form method="POST">
-        {% csrf_token %}
-        <fieldset>
+        <p > 
+            <h3 class="txt-cntr" >Sign Up </h3> 
+        </p>
+    <!-- <form method="POST"> -->
+        <form method="POST" name="signup_form" id="signup_form">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email id">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Enter password" name="password1" id="password1">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Re-Enter password" name="password2" id="password2">
+            </div>
+            {% if user_already_exixts %}
+                <p class="txt-cntr " style="color: red;"> User already exixts </p>
+            {% endif %}
+            <p class="txt-cntr ">
+                <button type="submit" class="btn btn-primary"> Join Now </button>
+            </p>
+            
+            <p class="txt-cntr ">
+                Already have an account? <a href="/login"> Log In </a>
+            </p>
+            <!-- <div class="form-group">
+                <label for="exampleFormControlInput1">Email address</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+              </div>
+            <div class="form-group ">
+              <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" id="inputPassword">
+              </div>
+            </div> -->
+          </form>
+        <!-- {% for field in form %}
+        <p>
+            {{ field.label_tag }}<br>
+            {{ field }}
+            {% if field.help_text %}
+                <small style="color: grey">{{ field.help_text }}</small>
+            {% endif %}
+            {% for error in field.errors %}
+            <p style="color: red">{{ error }}</p>
+          {% endfor %}
+            </p>
+        {% endfor %} -->
+        <!-- <fieldset>
             {{ form | crispy }}
-        </fieldset>
-        <button type="submit" class="btn btn-primary"> signup </button>
-    </form>
-    <p> Already have an account? <a href="/login"> Log In </a> </p>
+        </fieldset> -->
+        
+    <!-- </form> -->
+    
+    
     {% if msg %}
     <p style="color: red;"> Please enter valid form details </p>
     {% endif %}
 </div>
 <div class="col-4"></div>
 </div>
+
+<script>
+    $( 'form#signup_form' ).submit( function(){
+        var fm = $("#signup_form").validate();
+        if ($("#signup_form").valid()) {
+            var myform = document.getElementById("signup_form");
+            var fd = new FormData(myform );
+            $.ajax( {
+                    method: "POST",
+                    processData: false,
+                    contentType: false,
+                    data: fd,
+                    dataType: 'json',
+                    type: $( this ).attr( 'method' ),
+                    url: '/register',
+                    success: function( feedback ){
+                        console.log( "the feedback from your API: " + feedback );
+                    }
+            });
+        }
+    });
+    $(document).ready(function() {
+        $(function() {
+            $("form[name='signup_form']").validate({
+                rules: {
+                first_name: "required",
+                lastname: "required",
+                email: {
+                    required: true,
+                    email: true
+                },
+                password1: {
+                    required: true,
+                    minlength: 5
+                },
+                password2: {
+                    required: true,
+                    minlength: 5
+                }
+                },
+                messages: {
+                    first_name: "Please enter your firstname",
+                    lastname: "Please enter your lastname",
+                    password1: {
+                        required: "Please enter a password",
+                        minlength: "Your password must be at least 5 characters long"
+                    },
+                    password2: {
+                        required: "Please re-enter a password",
+                        minlength: "Your password must be at least 5 characters long"
+                    },
+                    email: "Please enter a valid email address"
+                },
+                // Make sure the form is submitted to the destination defined
+                // in the "action" attribute of the form when valid
+                submitHandler: function(form) {
+                    form.submit();
+                }
+            });
+            });
+    });
+</script>
 
 {% endblock %}
